@@ -1,0 +1,62 @@
+PORT 79 Enumeration
+https://book.hacktricks.xyz/network-services-pentesting/pentesting-finger
+Basic Info
+Finger is a program you can use to find information about computer users. It usually lists the login name, the full name, and possibly other details about the user you are fingering. These details may include the office location and phone number (if known), login time, idle time, time mail was last read, and the user's plan and project files.
+Default port: 79
+
+
+79/tcp    open  finger     Linux fingerd
+|_finger: No one logged on.\x0D
+
+finger user@192.168.123.142
+Login: user                             Name: user
+Directory: /home/user                   Shell: /bin/bash
+Never logged in.
+No mail.
+No Plan.
+
+Login: dovenull                         Name: Dovecot login user
+Directory: /nonexistent                 Shell: /bin/false
+Never logged in.
+No mail.
+No Plan.
+
+msf6 auxiliary(scanner/finger/finger_users) > set rhosts 192.168.123.142
+rhosts => 192.168.123.142
+msf6 auxiliary(scanner/finger/finger_users) > run
+
+[+] 192.168.123.142:79    - 192.168.123.142:79 - Found user: backup
+[+] 192.168.123.142:79    - 192.168.123.142:79 - Found user: bin
+[+] 192.168.123.142:79    - 192.168.123.142:79 - Found user: daemon
+[+] 192.168.123.142:79    - 192.168.123.142:79 - Found user: games
+[+] 192.168.123.142:79    - 192.168.123.142:79 - Found user: gnats
+[+] 192.168.123.142:79    - 192.168.123.142:79 - Found user: irc
+[+] 192.168.123.142:79    - 192.168.123.142:79 - Found user: landscape
+[+] 192.168.123.142:79    - 192.168.123.142:79 - Found user: libuuid
+[+] 192.168.123.142:79    - 192.168.123.142:79 - Found user: list
+[+] 192.168.123.142:79    - 192.168.123.142:79 - Found user: lp
+[+] 192.168.123.142:79    - 192.168.123.142:79 - Found user: mail
+[+] 192.168.123.142:79    - 192.168.123.142:79 - Found user: dovecot
+[+] 192.168.123.142:79    - 192.168.123.142:79 - Found user: man
+[+] 192.168.123.142:79    - 192.168.123.142:79 - Found user: messagebus
+[+] 192.168.123.142:79    - 192.168.123.142:79 - Found user: news
+[+] 192.168.123.142:79    - 192.168.123.142:79 - Found user: nobody
+[+] 192.168.123.142:79    - 192.168.123.142:79 - Found user: postfix
+[+] 192.168.123.142:79    - 192.168.123.142:79 - Found user: proxy
+[+] 192.168.123.142:79    - 192.168.123.142:79 - Found user: root
+[+] 192.168.123.142:79    - 192.168.123.142:79 - Found user: sshd
+[+] 192.168.123.142:79    - 192.168.123.142:79 - Found user: sync
+[+] 192.168.123.142:79    - 192.168.123.142:79 - Found user: sys
+[+] 192.168.123.142:79    - 192.168.123.142:79 - Found user: syslog
+[+] 192.168.123.142:79    - 192.168.123.142:79 - Found user: user
+[+] 192.168.123.142:79    - 192.168.123.142:79 - Found user: dovenull
+[+] 192.168.123.142:79    - 192.168.123.142:79 - Found user: uucp
+[+] 192.168.123.142:79    - 192.168.123.142:79 - Found user: whoopsie
+[+] 192.168.123.142:79    - 192.168.123.142:79 - Found user: www-data
+[+] 192.168.123.142:79    - 192.168.123.142:79 Users found: backup, bin, daemon, dovecot, dovenull, games, gnats, irc, landscape, libuuid, list, lp, mail, man, messagebus, news, nobody, postfix, proxy, root, sshd, sync, sys, syslog, user, uucp, whoopsie, www-data
+[*] 192.168.123.142:79    - Scanned 1 of 1 hosts (100% complete)
+[*] Auxiliary module execution completed
+
+
+
+
